@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermovie/ui/screens/screens.dart';
 
-class MyHero extends StatelessWidget {
+class watch extends StatelessWidget {
   final String imgUrl;
 
-  const MyHero({Key? key, required this.imgUrl}) : super(key: key);
+  const watch({Key? key, required this.imgUrl}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +13,7 @@ class MyHero extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Positioned(
-            bottom: 25,
+            bottom: 55,
             left: 0,
             right: 0,
             top: 0,
@@ -29,7 +29,8 @@ class MyHero extends StatelessWidget {
             right: 0,
             left: 0,
             child: Container(
-              color: Colors.black.withOpacity(.4),
+              color:
+                  Colors.black.withOpacity(0.4), //khung chứa tmdb đã bị làm mờ
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -48,7 +49,7 @@ class MyHero extends StatelessWidget {
                   ),
                   IconButton(
                     icon: Icon(
-                      Icons.favorite_border,
+                      Icons.bookmark_add_outlined,
                       color: Colors.white,
                     ),
                     onPressed: () {},
@@ -59,29 +60,29 @@ class MyHero extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, VideoApp.route);
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black45,
-                        blurRadius: 3.0,
-                        offset: Offset(0, 1)),
-                  ],
-                ),
-                padding: EdgeInsets.all(15.0),
-                child: Icon(
-                  Icons.play_arrow,
-                  color: Colors.red,
-                ),
+            // child: InkWell(
+            // onTap: () {
+            //   // Navigator.pushNamed(context, VideoApp.route);
+            // },
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.white,
+                      blurRadius: 3.0,
+                      offset: Offset(0, 1)),
+                ],
+              ),
+              padding: EdgeInsets.all(15.0),
+              child: Icon(
+                Icons.not_started_outlined,
+                color: Colors.red,
               ),
             ),
           ),
+          // ),
           Positioned(
             bottom: 0,
             left: 5,
@@ -90,10 +91,12 @@ class MyHero extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.add),
+                  color: Colors.white,
+                  icon: Icon(Icons.add_circle_outline),
                   onPressed: () {},
                 ),
                 IconButton(
+                  color: Colors.white,
                   icon: Icon(Icons.share),
                   onPressed: () {},
                 ),
@@ -111,9 +114,8 @@ class CustomClip extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
 
-    path.lineTo(0, size.height - 31);
-    path.quadraticBezierTo(
-        size.width / 2, size.height + 31, size.width, size.height - 31);
+    path.lineTo(0, size.height);
+    path.quadraticBezierTo(size.width, size.height, size.width, size.height);
     path.lineTo(size.width, 0);
     return path;
   }

@@ -1,4 +1,4 @@
-import 'dart:math';
+// import 'dart:math';
 
 class FeaturedMovieModel {
   final String original_title, overview, poster_path, country, release_date;
@@ -21,7 +21,6 @@ class FeaturedMovieModel {
         overview: json['overview'],
         poster_path: json['poster_path'],
         id: json['id'],
-        // country: json['production_companies'][0]['origin_country'],
         release_date: json['release_date'],
         // run_time: json['runtime'],
         // genre: json['genres'],

@@ -29,7 +29,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         body: FutureBuilder<MovieModel>(
           future: movieModel,
           builder: (context, snapshot) {
@@ -37,11 +37,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
               return SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
-                    MyHero(
+                    watch(
                       imgUrl: getPosterImage(snapshot.data!.poster_path),
                     ),
                     SizedBox(
-                      height: 11,
+                      height: 5,
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 15.0),
@@ -49,7 +49,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         children: <Widget>[
                           Text(
                             "${snapshot.data!.original_title}",
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1!
+                                .apply(color: Colors.white),
                           ),
                           SizedBox(
                             height: 7.0,
@@ -61,10 +64,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 (i) {
                                   return TextSpan(
                                       text:
+                                          //Dòng chữ nhỏ dưới tên phim
                                           "${snapshot.data!.genre[i]['name']} ");
                                 },
                               ),
-                              style: Theme.of(context).textTheme.caption,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .apply(color: Colors.white),
                             ),
                           ),
                           SizedBox(height: 9.0),
@@ -73,7 +80,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               padding: const EdgeInsets.all(8.0),
                               child: RatingBar.builder(
                                 initialRating: snapshot.data!.rating,
-                                // initialRating: 3,
                                 direction: Axis.horizontal,
                                 allowHalfRating: true,
                                 itemCount: 5,
@@ -98,12 +104,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 children: <Widget>[
                                   Text(
                                     "Year",
-                                    style: Theme.of(context).textTheme.caption,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle2!
+                                        .apply(color: Colors.white),
                                   ),
                                   Text(
                                     "${DateTime.parse(snapshot.data!.release_date).year}",
-                                    style:
-                                        Theme.of(context).textTheme.subtitle2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle2!
+                                        .apply(color: Color(0xff0099CC)),
                                   ),
                                 ],
                               ),
@@ -111,12 +122,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 children: <Widget>[
                                   Text(
                                     "Country",
-                                    style: Theme.of(context).textTheme.caption,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle2!
+                                        .apply(color: Colors.white),
                                   ),
                                   Text(
                                     "${snapshot.data!.country}",
-                                    style:
-                                        Theme.of(context).textTheme.subtitle2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle2!
+                                        .apply(color: Color(0xff0099CC)),
                                   ),
                                 ],
                               ),
@@ -124,12 +140,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 children: <Widget>[
                                   Text(
                                     "Length",
-                                    style: Theme.of(context).textTheme.caption,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle2!
+                                        .apply(color: Colors.white),
                                   ),
                                   Text(
                                     "${snapshot.data!.run_time} min",
-                                    style:
-                                        Theme.of(context).textTheme.subtitle2,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .subtitle2!
+                                        .apply(color: Color(0xff0099CC)),
                                   ),
                                 ],
                               ),
@@ -142,13 +163,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyText2!
-                                .apply(fontSizeFactor: 1.0),
+                                .apply(color: Colors.white),
                           ),
                           SizedBox(height: 13.0),
                         ],
                       ),
                     ),
-                    // MyScreenshots(),
                     SizedBox(height: 13.0),
                   ],
                 ),

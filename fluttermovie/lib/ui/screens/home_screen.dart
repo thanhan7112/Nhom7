@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fluttermovie/api.dart';
 import 'package:fluttermovie/models/featuredmoviemodel.dart';
 import 'package:fluttermovie/models/genremodel.dart';
+import 'package:fluttermovie/ui/screens/about.dart';
+import 'package:fluttermovie/ui/screens/saved.dart';
 import 'package:fluttermovie/ui/widgets/homepagefeaturedwidget.dart';
 import 'package:fluttermovie/ui/widgets/widgets.dart';
+import 'package:fluttermovie/ui/screens/mydrawerheader.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -26,20 +29,35 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        //menu
+        drawer: Drawer(
+          child: SingleChildScrollView(
+            child: Container(
+              child: Column(
+                children: [
+                  MyHeaderDrawer(),
+                  MyDrawerList(),
+                ],
+              ),
+            ),
+          ),
+        ),
+        //
+
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.blue.shade100,
+          backgroundColor: Colors.black,
           elevation: 0,
           actions: <Widget>[
             IconButton(
-                icon: Icon(Icons.search, color: Colors.black), onPressed: () {})
+                icon: Icon(Icons.search, color: Colors.white), onPressed: () {})
           ],
-          leading: IconButton(
-              icon: Icon(Icons.menu, color: Colors.black), onPressed: () {}),
           title: Text(
             "TMDB",
-            style: TextStyle(
-                color: Colors.blue.shade900, fontWeight: FontWeight.bold),
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .apply(color: Colors.white),
           ),
           centerTitle: true,
         ),
@@ -47,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: <Widget>[
               Container(
-                height: MediaQuery.of(context).size.height / 3,
+                height: MediaQuery.of(context).size.height / 2.8,
                 child: FutureBuilder<List<FeaturedMovieModel>>(
                   future: featuredMovies,
                   builder: (context, snapshot) {
@@ -61,7 +79,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 padding: EdgeInsets.only(left: 5.0),
-                height: 61,
+                height: 50,
+
+                //hiển thị một CircularProgressIndicator. Sau đó, khi nhận được dữ liệu, nó sẽ chuyển sang HomePageFeaturedWidget và chuyển ảnh chụp nhanh dữ liệu dưới dạng một biến.
+                //Sau đó, HomePageFeaturedWidget sẽ hiển thị dữ liệu tương ứng
                 child: FutureBuilder<List<GenreModel>>(
                   future: genreList,
                   builder: (context, snapshot) {
@@ -73,16 +94,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           return Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
-                                  15.0), //action adventure...
-                              color: Colors.blue.shade900,
+                                  10.0), //action adventure...
+                              color: Colors.black, //màu khung action,...
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.blue,
+                                  color: Colors.black,
                                   blurRadius: 2.5,
                                 )
                               ],
                             ),
-                            // width: MediaQuery.of(context).size.width / 2.5,
                             constraints: BoxConstraints(minWidth: 100),
                             alignment: Alignment.center,
                             margin: EdgeInsets.symmetric(
@@ -110,12 +130,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(
-                height: 15,
+                height: 18,
               ),
               SectionContainer(
-                sectionTitle: "My List",
+                sectionTitle: "Trending",
                 child: Container(
-                  height: MediaQuery.of(context).size.height / 3,
+                  height: MediaQuery.of(context).size.height /
+                      2.8, //Cao poster từng phim
+
+                  //hiển thị một CircularProgressIndicator. Sau đó, khi nhận được dữ liệu, nó sẽ chuyển sang HomePageFeaturedWidget và chuyển ảnh chụp nhanh dữ liệu dưới dạng một biến.
                   child: FutureBuilder<List<FeaturedMovieModel>>(
                     future: featuredMovies,
                     builder: (ctx, snapshot) {
@@ -136,13 +159,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 15,
-              ),
               SectionContainer(
+                //Build ben section_container.dart
                 sectionTitle: "Popular on TMDB",
                 child: Container(
-                  height: MediaQuery.of(context).size.height / 4,
+                  height: MediaQuery.of(context).size.height / 2.8,
+
+                  // /hiển thị một CircularProgressIndicator. Sau đó, khi nhận được dữ liệu, nó sẽ chuyển sang HomePageFeaturedWidget và chuyển ảnh chụp nhanh dữ liệu dưới dạng một biến.
                   child: FutureBuilder<List<FeaturedMovieModel>>(
                     future: featuredMovies,
                     builder: (ctx, snapshot) {
@@ -163,6 +186,97 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget MyDrawerList() {
+    return Container(
+      padding: EdgeInsets.only(
+        top: 15,
+      ),
+      child: Column(
+        children: [
+          AboutItem(),
+          SaveItem(),
+        ],
+      ),
+    );
+  }
+
+  Widget AboutItem() {
+    return Material(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AboutPage(),
+            ),
+          );
+        },
+        child: Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Icon(
+                  Icons.account_balance,
+                  size: 20,
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  "About us",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget SaveItem() {
+    return Material(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SavedPage(),
+            ),
+          );
+        },
+        child: Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Icon(
+                  Icons.bookmark_add_outlined,
+                  size: 20,
+                  color: Colors.black,
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  "Saved",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              )
             ],
           ),
         ),

@@ -31,6 +31,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     //first name field
     final firstNameField = TextFormField(
+        style: TextStyle(color: Colors.white),
         autofocus: false,
         controller: firstNameEditingController,
         keyboardType: TextInputType.name,
@@ -49,16 +50,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.account_circle),
+          fillColor: Colors.white,
+          prefixIcon: Icon(
+            Icons.account_circle,
+            color: Colors.white,
+          ),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "First Name",
+          hintStyle: TextStyle(color: Color(0xffCCCCCC)),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10).copyWith(),
+            borderSide: BorderSide(color: Colors.white, width: 1.0),
+          ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10).copyWith(),
           ),
         ));
 
     //second name field
     final secondNameField = TextFormField(
+        style: TextStyle(color: Colors.white),
         autofocus: false,
         controller: secondNameEditingController,
         keyboardType: TextInputType.name,
@@ -73,16 +84,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.account_circle),
+          prefixIcon: Icon(
+            Icons.account_circle,
+            color: Colors.white,
+          ),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Second Name",
+          hintStyle: TextStyle(color: Color(0xffCCCCCC)),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10).copyWith(),
+            borderSide: BorderSide(color: Colors.white, width: 1.0),
+          ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10).copyWith(),
           ),
         ));
 
     //email field
     final emailField = TextFormField(
+        style: TextStyle(color: Colors.white),
         autofocus: false,
         controller: emailEditingController,
         keyboardType: TextInputType.emailAddress,
@@ -102,16 +122,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail),
+          prefixIcon: Icon(
+            Icons.mail,
+            color: Colors.white,
+          ),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
+          hintStyle: TextStyle(color: Color(0xffCCCCCC)),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10).copyWith(),
+            // width: 0.0 produces a thin "hairline" border
+            borderSide: BorderSide(color: Colors.white, width: 1.0),
+          ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10).copyWith(),
           ),
         ));
 
     //password field
     final passwordField = TextFormField(
+        style: TextStyle(color: Colors.white),
         autofocus: false,
         controller: passwordEditingController,
         obscureText: true,
@@ -129,16 +159,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.vpn_key),
+          prefixIcon: Icon(
+            Icons.vpn_key,
+            color: Colors.white,
+          ),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Password",
+          hintStyle: TextStyle(color: Color(0xffCCCCCC)),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10).copyWith(),
+            // width: 0.0 produces a thin "hairline" border
+            borderSide: BorderSide(color: Colors.white, width: 1.0),
+          ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10).copyWith(),
           ),
         ));
 
     //confirm password field
     final confirmPasswordField = TextFormField(
+        style: TextStyle(color: Colors.white),
         autofocus: false,
         controller: confirmPasswordEditingController,
         obscureText: true,
@@ -154,11 +194,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         textInputAction: TextInputAction.done,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.vpn_key),
+          prefixIcon: Icon(
+            Icons.vpn_key,
+            color: Colors.white,
+          ),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Confirm Password",
+          hintStyle: TextStyle(color: Color(0xffCCCCCC)),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10).copyWith(),
+            // width: 0.0 produces a thin "hairline" border
+            borderSide: BorderSide(color: Colors.white, width: 1.0),
+          ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10).copyWith(),
           ),
         ));
 
@@ -166,7 +215,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     final signUpButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Color(0xff006666),
+      color: Colors.white,
       child: MaterialButton(
           padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           minWidth: MediaQuery.of(context).size.width,
@@ -177,17 +226,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             "SignUp",
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
           )),
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.blue.shade900),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -196,7 +245,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            color: Colors.black,
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Form(

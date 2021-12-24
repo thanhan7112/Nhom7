@@ -10,17 +10,18 @@ class HomePageFeaturedWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  //poster lớn ở đầu màn hình home
   Widget build(BuildContext context) {
     return PageView.builder(
       itemCount: snapshot.data!.length,
       itemBuilder: (ctx, id) {
         return Container(
-          margin: EdgeInsets.all(15.0),
+          margin: EdgeInsets.only(top: 30, left: 12, bottom: 12, right: 12),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
             boxShadow: [
               BoxShadow(
-                  blurRadius: 5.0,
+                  blurRadius: 1.0,
                   color: Colors.grey.shade400,
                   offset: Offset(0, 3))
             ],
@@ -31,12 +32,12 @@ class HomePageFeaturedWidget extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
                   child: Image.network(
-                    // movieList[id]['img'],
                     getPosterImage(snapshot.data![id].poster_path),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
+              //bóng mờ chứa text
               Positioned(
                 bottom: 0,
                 left: 0,

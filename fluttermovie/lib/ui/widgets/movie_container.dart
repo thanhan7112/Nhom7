@@ -17,34 +17,37 @@ class MovieContainer extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
+            //Chuyen den man hinh detailscreen
             builder: (ctx) => DetailsScreen(id: snapshot.id),
           ),
         );
       },
+      //bóng
       child: Container(
         width: MediaQuery.of(context).size.width / 2.5,
         margin: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-                blurRadius: 5.0,
-                color: Colors.grey.shade400,
-                offset: Offset(0, 3))
+                blurRadius: 4.0,
+                color: Colors.grey.shade700,
+                offset: Offset(0, 2))
           ],
         ),
+        //box phim
         child: Stack(
           children: <Widget>[
             Positioned.fill(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.circular(10),
                 child: Image.network(
-                  // movieList[id]['img'],
                   getPosterImage(snapshot.poster_path),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
+            //Lớp phủ màu xóm chứa tên phim
             Positioned(
               bottom: 0,
               left: 0,
@@ -54,12 +57,11 @@ class MovieContainer extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15),
+                    bottomRight: Radius.circular(50),
                   ),
                   color: Colors.black45,
                 ),
                 child: Text(
-                  // "${movieList[id]['title']}",
                   snapshot.original_title,
                   style: TextStyle(
                     color: Colors.white,

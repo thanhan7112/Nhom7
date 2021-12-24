@@ -15,15 +15,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Raleway'),
+      theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: 'Raleway',
+          errorColor: Colors.white),
       home: LoginScreen(),
       // initialRoute: '/',
-      routes: {
-        // '/': (ctx) => HomeScreen(),
-        VideoApp.route: (ctx) => VideoApp(),
-      },
+      // routes: {
+      //   '/': (ctx) => LoginScreen(),
+      //   // VideoApp.route: (ctx) => VideoApp(),
+      // },
     );
   }
 }

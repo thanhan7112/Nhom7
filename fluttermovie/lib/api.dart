@@ -3,22 +3,32 @@ import 'package:http/http.dart' as http;
 import 'package:fluttermovie/models/moviemodel.dart';
 import 'package:fluttermovie/models/featuredmoviemodel.dart';
 
+//Tích hợp api thông qua api.dart và genremodel
+// liên kết giao diện người dùng với api bằng home_screen và homepagefeaturewidget
 import 'models/genremodel.dart';
 
+//Lớp Api sẽ chịu trách nhiệm gọi backend mỗi khi bạn gọi một trong các hàm của nó.
 class Api {
   var httpClient = http.Client();
 
+  // Bên trong lớp này đặt các biến sau:
   static const url = "https://api.themoviedb.org/3";
-  static const apiKey = "7a3ba7eae888162b2dc5e16c755a6fab";
+  static const apiKey = "22029fdd6e2d58caa827696931864516";
 
+  //Hàm getGenreList() nó là một async(kh đồng bộ) và trả về một future
+  //Hàm này trả về một future kiểu danh sách kiểu GenreModel
   Future<List<GenreModel>> getGenreList() async {
+    //Thiết lập một biến phản hồi (final response)
+    //Nó sẽ thông qua apiKey và http.get, url để lấy về thể loại/phim/danh sách
     final response =
         await http.get(Uri.parse('$url/genre/movie/list?api_key=$apiKey'));
 
+    // kiểm tra xem mã trạng thái response có phải là 200 hay không, điều này về cơ bản trong http có nghĩa là mọi thứ đã ổn
     if (response.statusCode == 200) {
       final parsed =
           json.decode(response.body)['genres'].cast<Map<String, dynamic>>();
 
+      //Sau đó, trả lại nó dưới dạng danh sách
       return parsed
           .map<GenreModel>((json) => GenreModel.fromJson(json))
           .toList();

@@ -9,22 +9,28 @@ class SectionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 15.0),
+      padding: EdgeInsets.only(left: 12.0),
       child: Column(
         children: <Widget>[
           Row(
             children: <Widget>[
               Text(
                 sectionTitle,
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               ),
               Spacer(),
-              Icon(Icons.arrow_forward),
-              SizedBox(width: 15.0),
+              Icon(
+                Icons.switch_left_sharp,
+                color: Colors.black,
+              ),
+              const SizedBox(width: 15.0),
             ],
           ),
           SizedBox(
-            height: 13,
+            height: 2,
           ),
           child,
         ],

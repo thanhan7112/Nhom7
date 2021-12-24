@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:fluttermovie/ui/screens/forgotpassword.dart';
 import 'package:fluttermovie/ui/screens/home_screen.dart';
 import 'package:fluttermovie/ui/screens/registration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final emailField = TextFormField(
       autofocus: false,
       controller: emailController,
+      style: TextStyle(color: Colors.white),
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value!.isEmpty) {
@@ -44,9 +48,19 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.mail),
+        fillColor: Colors.white,
+        prefixIcon: Icon(
+          Icons.mail,
+          color: Colors.white,
+        ),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Email",
+        hintStyle: TextStyle(color: Color(0xffCCCCCC)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10).copyWith(),
+          // width: 0.0 produces a thin "hairline" border
+          borderSide: BorderSide(color: Colors.white, width: 1.0),
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10).copyWith(),
         ),
@@ -56,10 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
     //password field
     final passwordField = TextFormField(
       autofocus: false,
-
+      style: TextStyle(color: Colors.white),
       controller: passwordController,
       obscureText: true, // ẩn pass
       validator: (value) {
+        TextStyle(color: Color(0xffFFFFFF));
         RegExp regex = new RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
           return ("Password is required for login");
@@ -73,9 +88,18 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.vpn_key),
+        prefixIcon: Icon(
+          Icons.vpn_key,
+          color: Colors.white,
+        ),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Password",
+        hintStyle: TextStyle(color: Color(0xffCCCCCC)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10).copyWith(),
+          // width: 0.0 produces a thin "hairline" border
+          borderSide: BorderSide(color: Colors.white, width: 1.0),
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10).copyWith(),
         ),
@@ -85,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30).copyWith(),
-      color: Color(0xff006666),
+      color: Colors.white,
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -96,17 +120,17 @@ class _LoginScreenState extends State<LoginScreen> {
           "Login",
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.white,
+            color: Colors.black,
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Form(
@@ -129,27 +153,49 @@ class _LoginScreenState extends State<LoginScreen> {
                     loginButton,
                     SizedBox(height: 15),
                     Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("Don't have an account? "),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => RegistrationScreen(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              "SignUp",
-                              style: TextStyle(
-                                  color: Color(0xff006666),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
-                            ),
-                          )
-                        ])
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Don't have an account? ",
+                          style: TextStyle(color: Color(0xffDDDDDD)),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RegistrationScreen(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "SignUp",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          child: Text(
+                            'Forgot Password ?',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15),
+                          ),
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => ResetScreen()),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),
