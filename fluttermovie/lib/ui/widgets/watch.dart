@@ -60,10 +60,6 @@ class watch extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            // child: InkWell(
-            // onTap: () {
-            //   // Navigator.pushNamed(context, VideoApp.route);
-            // },
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -82,7 +78,6 @@ class watch extends StatelessWidget {
               ),
             ),
           ),
-          // ),
           Positioned(
             bottom: 0,
             left: 5,

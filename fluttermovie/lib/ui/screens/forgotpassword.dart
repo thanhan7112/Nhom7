@@ -44,7 +44,6 @@ class _ResetScreenState extends State<ResetScreen> {
                 } else {
                   return ("Check mail");
                 }
-                ;
               },
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,

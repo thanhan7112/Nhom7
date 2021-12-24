@@ -270,7 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 flex: 3,
                 child: Text(
-                  "Saved",
+                  "My movies",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,

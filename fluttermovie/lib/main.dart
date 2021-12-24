@@ -21,11 +21,6 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Raleway',
           errorColor: Colors.white),
       home: LoginScreen(),
-      // initialRoute: '/',
-      // routes: {
-      //   '/': (ctx) => LoginScreen(),
-      //   // VideoApp.route: (ctx) => VideoApp(),
-      // },
     );
   }
 }
