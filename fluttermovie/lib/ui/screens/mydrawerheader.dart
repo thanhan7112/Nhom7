@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fluttermovie/models/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyHeaderDrawer extends StatefulWidget {
@@ -6,6 +9,22 @@ class MyHeaderDrawer extends StatefulWidget {
 }
 
 class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedInUser = UserModel();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      this.loggedInUser = UserModel.fromMap(value.data());
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,13 +49,11 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
             "Nhom 7",
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
-          Text(
-            "Nguyen Thanh An",
-            style: TextStyle(
-              color: Colors.grey[200],
-              fontSize: 14,
-            ),
-          ),
+          Text("${loggedInUser.secondName} ${loggedInUser.firstName}",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              )),
         ],
       ),
     );

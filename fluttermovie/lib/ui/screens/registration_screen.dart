@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttermovie/models/user_model.dart';
-import 'package:fluttermovie/ui/screens/home_screen.dart';
+// import 'package:fluttermovie/ui/screens/about.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fluttermovie/ui/screens/login_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -291,6 +292,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             .then((value) => {postDetailsToFirestore()})
             .catchError((e) {
           Fluttertoast.showToast(msg: e!.message);
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => LoginScreen()));
         });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
@@ -340,7 +343,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     Navigator.pushAndRemoveUntil(
         (context),
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
         (route) => false);
   }
 }

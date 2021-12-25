@@ -3,6 +3,7 @@ import 'package:fluttermovie/api.dart';
 import 'package:fluttermovie/models/featuredmoviemodel.dart';
 import 'package:fluttermovie/models/genremodel.dart';
 import 'package:fluttermovie/ui/screens/about.dart';
+import 'package:fluttermovie/ui/screens/login_screen.dart';
 import 'package:fluttermovie/ui/screens/saved.dart';
 import 'package:fluttermovie/ui/widgets/homepagefeaturedwidget.dart';
 import 'package:fluttermovie/ui/widgets/widgets.dart';
@@ -202,6 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           AboutItem(),
           SaveItem(),
+          LogoutItem(),
         ],
       ),
     );
@@ -231,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 flex: 3,
                 child: Text(
-                  "About us",
+                  "Profile",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,
@@ -271,6 +273,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 flex: 3,
                 child: Text(
                   "My movies",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget LogoutItem() {
+    return Material(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const LoginScreen(),
+            ),
+          );
+        },
+        child: Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Icon(
+                  Icons.wrap_text,
+                  size: 20,
+                  color: Colors.black,
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  "Exit",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,
