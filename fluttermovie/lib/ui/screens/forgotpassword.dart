@@ -126,7 +126,7 @@ class _ResetScreenState extends State<ResetScreen> {
             .sendPasswordResetEmail(email: email)
             // .signInWithEmailAndPassword(email: email)
             .then((uid) => {
-                  Fluttertoast.showToast(msg: "Reset Successful"),
+                  Fluttertoast.showToast(msg: "Please check your email"),
                   Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => LoginScreen())),
                 });
@@ -137,9 +137,6 @@ class _ResetScreenState extends State<ResetScreen> {
             break;
           case "user-not-found":
             errorMessage = "User with this email doesn't exist.";
-            break;
-          case "user-disabled":
-            errorMessage = "User with this email has been disabled.";
             break;
           case "too-many-requests":
             errorMessage = "Too many requests";

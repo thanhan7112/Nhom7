@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttermovie/models/featuredmoviemodel.dart';
-import 'package:fluttermovie/global.dart';
+import 'package:fluttermovie/api.dart';
 
 class HomePageFeaturedWidget extends StatelessWidget {
   final AsyncSnapshot<List<FeaturedMovieModel>> snapshot;
@@ -16,14 +16,13 @@ class HomePageFeaturedWidget extends StatelessWidget {
       itemCount: snapshot.data!.length,
       itemBuilder: (ctx, id) {
         return Container(
-          margin: EdgeInsets.only(top: 30, left: 12, bottom: 12, right: 12),
+          // width: MediaQuery.of(context).size.width / 5,
+          margin: EdgeInsets.only(top: 15, left: 15, bottom: 15, right: 15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
             boxShadow: [
               BoxShadow(
-                  blurRadius: 1.0,
-                  color: Colors.grey.shade400,
-                  offset: Offset(0, 3))
+                  blurRadius: 12.0, color: Colors.black, offset: Offset(0, 1))
             ],
           ),
           child: Stack(
@@ -33,7 +32,7 @@ class HomePageFeaturedWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.0),
                   child: Image.network(
                     getPosterImage(snapshot.data![id].poster_path),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),

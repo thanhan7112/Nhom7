@@ -30,7 +30,7 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
     return Container(
       color: Colors.black,
       width: double.infinity,
-      height: 200,
+      height: 180,
       padding: EdgeInsets.only(top: 20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +39,8 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
             margin: EdgeInsets.only(bottom: 10),
             height: 70,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(30),
+              // shape: BoxShape.circle,
               image: DecorationImage(
                 image: AssetImage('assets/image/bgr.png'),
               ),

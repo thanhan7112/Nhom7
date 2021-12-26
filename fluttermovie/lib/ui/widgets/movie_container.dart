@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermovie/global.dart';
+import 'package:fluttermovie/api.dart';
 import 'package:fluttermovie/models/featuredmoviemodel.dart';
 import '../screens/screens.dart';
 
@@ -30,9 +30,7 @@ class MovieContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-                blurRadius: 4.0,
-                color: Colors.grey.shade700,
-                offset: Offset(0, 2))
+                blurRadius: 12.0, color: Colors.black, offset: Offset(0, 1))
           ],
         ),
         //box phim
@@ -43,7 +41,7 @@ class MovieContainer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 child: Image.network(
                   getPosterImage(snapshot.poster_path),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -56,8 +54,8 @@ class MovieContainer extends StatelessWidget {
                 padding: EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(50),
+                    bottomLeft: Radius.circular(12),
+                    bottomRight: Radius.circular(12),
                   ),
                   color: Colors.black45,
                 ),

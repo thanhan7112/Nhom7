@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Raleway',
           errorColor: Colors.white),
       home: LoginScreen(),
+      // routes: {
+      //   VideoApp.route: (ctx) => VideoApp(),
+      // },
     );
   }
 }

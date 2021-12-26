@@ -8,7 +8,7 @@ class watch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 3.0),
+      padding: EdgeInsets.only(bottom: 3.0, left: 10, right: 10),
       height: MediaQuery.of(context).size.height / 2.5,
       child: Stack(
         children: <Widget>[
@@ -17,11 +17,12 @@ class watch extends StatelessWidget {
             left: 0,
             right: 0,
             top: 0,
-            child: ClipPath(
-              clipper: CustomClip(),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              // clipper: CustomClip(),
               child: Image.network(
                 "$imgUrl",
-                fit: BoxFit.cover,
+                fit: BoxFit.fitWidth,
               ),
             ),
           ),
@@ -58,65 +59,50 @@ class watch extends StatelessWidget {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.white,
-                      blurRadius: 3.0,
-                      offset: Offset(0, 1)),
-                ],
-              ),
-              padding: EdgeInsets.all(15.0),
-              child: Icon(
-                Icons.not_started_outlined,
-                color: Colors.red,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 5,
-            right: 5,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  color: Colors.white,
-                  icon: Icon(Icons.add_circle_outline),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  color: Colors.white,
-                  icon: Icon(Icons.share),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-          )
+          // Align(
+          //   alignment: Alignment.bottomCenter,
+          //   child: InkWell(
+          //     onTap: () {
+          //       Navigator.pushNamed(context, VideoApp.route);
+          //     },
+          //     child: Container(
+          //       decoration: BoxDecoration(
+          //         shape: BoxShape.circle,
+          //         color: Colors.white,
+          //         boxShadow: [
+          //           BoxShadow(
+          //               color: Colors.black45,
+          //               blurRadius: 3.0,
+          //               offset: Offset(0, 1)),
+          //         ],
+          //       ),
+          //       padding: EdgeInsets.all(15.0),
+          //       child: Icon(
+          //         Icons.play_arrow,
+          //         color: Colors.red,
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
   }
 }
 
-class CustomClip extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
+// class CustomClip extends CustomClipper<Path> {
+//   @override
+//   Path getClip(Size size) {
+//     Path path = Path();
 
-    path.lineTo(0, size.height);
-    path.quadraticBezierTo(size.width, size.height, size.width, size.height);
-    path.lineTo(size.width, 0);
-    return path;
-  }
+//     path.lineTo(0, size.height);
+//     path.quadraticBezierTo(size.width, size.height, size.width, size.height);
+//     path.lineTo(size.width, 0);
+//     return path;
+//   }
 
-  @override
-  bool shouldReclip(CustomClip oldClipper) {
-    return true;
-  }
-}
+//   @override
+//   bool shouldReclip(CustomClip oldClipper) {
+//     return true;
+//   }
+// }

@@ -1,10 +1,11 @@
 class MovieModel {
   final String original_title, overview, poster_path, country, release_date;
-  final int id, run_time;
+  final int id, run_time, vote_count;
   final double rating;
   final List genre;
   MovieModel(
       {required this.country,
+      required this.vote_count,
       required this.rating,
       required this.genre,
       required this.release_date,
@@ -23,6 +24,7 @@ class MovieModel {
         release_date: json['release_date'],
         run_time: json['runtime'],
         genre: json['genres'],
-        rating: json['vote_average']);
+        rating: json['vote_average'],
+        vote_count: json['vote_count']);
   }
 }

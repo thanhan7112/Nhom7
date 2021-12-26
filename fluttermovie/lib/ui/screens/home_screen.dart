@@ -31,14 +31,25 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         //menu
-        drawer: Drawer(
-          child: SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: [
-                  MyHeaderDrawer(),
-                  MyDrawerList(),
-                ],
+        drawer: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+          child: Drawer(
+            child: SingleChildScrollView(
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(width: 1.0, color: Colors.white),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    MyHeaderDrawer(),
+                    MyDrawerList(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -99,9 +110,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.black, //màu khung action,...
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black,
-                                  blurRadius: 2.5,
-                                )
+                                    color: Colors.black,
+                                    blurRadius: 14.0,
+                                    offset: Offset(0, 1))
                               ],
                             ),
                             constraints: BoxConstraints(minWidth: 100),
