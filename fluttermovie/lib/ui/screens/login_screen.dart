@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:fluttermovie/ui/screens/forgotpassword.dart';
 import 'package:fluttermovie/ui/screens/home_screen.dart';
 import 'package:fluttermovie/ui/screens/registration_screen.dart';

@@ -61,6 +61,7 @@ class SearchMovie extends SearchDelegate {
             child: CircularProgressIndicator(),
           );
         }
+
         List<SearchModel>? data = snapshot.data;
         return ListView.builder(
             itemCount: data?.length,
@@ -68,13 +69,18 @@ class SearchMovie extends SearchDelegate {
               return ListTile(
                 title: Row(
                   children: [
+                    Padding(
+                        padding: EdgeInsets.only(
+                            top: 10, bottom: 10, left: 5, right: 10)),
                     Expanded(
                       //sua loi widget
                       child: Container(
+                        // padding: EdgeInsets.all(10),
+
                         height: MediaQuery.of(context).size.height / 6,
                         decoration: BoxDecoration(
                           color: Color(0xff009966),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(8),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black,
@@ -96,6 +102,7 @@ class SearchMovie extends SearchDelegate {
                             children: <Widget>[
                               Positioned.fill(
                                 child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
                                   child: Image.network(
                                     getPosterImage(data![index].poster_path),
                                     fit: BoxFit.cover,
@@ -107,11 +114,11 @@ class SearchMovie extends SearchDelegate {
                         ),
                       ),
                     ),
-                    SizedBox(width: 10),
+                    // SizedBox(height: 10),
+                    SizedBox(width: 15),
                     Expanded(
                       flex: 3,
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(height: 10),
                           Text(
@@ -121,13 +128,17 @@ class SearchMovie extends SearchDelegate {
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
                             ),
+                            textAlign: TextAlign.center,
                           ),
                           Icon(
                             Icons.panorama_photosphere_outlined,
                             size: 20,
                             color: Colors.yellow,
                           ),
-                          Text('${data[index].vote_count}')
+                          Text(
+                            '${data[index].vote_count}',
+                            textAlign: TextAlign.center,
+                          )
                         ],
                       ),
                     ),
