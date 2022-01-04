@@ -16,4 +16,4 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 
-// Xuất hiển thông báo ════════ Exception caught by widgets library ═══════════════════════════════════ Incorrect use of ParentDataWidget. mỗi khi em tải lại màn hình tìm kiếm của app, mặc dùng Expanded đã nằm trong Row
+// Xuất hiện thông báo ════════ Exception caught by widgets library ═══════════════════════════════════ Incorrect use of ParentDataWidget. mỗi khi em tải lại màn hình tìm kiếm của app, mặc dùng Expanded đã nằm trong Row
