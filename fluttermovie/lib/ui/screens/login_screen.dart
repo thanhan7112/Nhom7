@@ -32,9 +32,10 @@ class _LoginScreenState extends State<LoginScreen> {
     final emailField = TextFormField(
       autofocus: false,
       controller: emailController,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.white, fontSize: 18),
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
+        TextStyle(color: Colors.white, fontSize: 18);
         if (value!.isEmpty) {
           return ("Please Enter Your Email");
         }
@@ -48,33 +49,33 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        fillColor: Colors.white,
+        // fillColor: Colors.white,
         prefixIcon: Icon(
           Icons.mail,
           color: Colors.white,
         ),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Email",
-        hintStyle: TextStyle(color: Color(0xffCCCCCC)),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10).copyWith(),
-          // width: 0.0 produces a thin "hairline" border
-          borderSide: BorderSide(color: Colors.white, width: 1.0),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10).copyWith(),
-        ),
+        hintStyle: TextStyle(color: Color(0xff99CCCC), fontSize: 16),
+        // enabledBorder: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(10).copyWith(),
+        //   // width: 0.0 produces a thin "hairline" border
+        //   borderSide: BorderSide(color: Colors.white, width: 1.0),
+        // ),
+        // border: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(10).copyWith(),
+        // ),
       ),
     );
 
     //password field
     final passwordField = TextFormField(
       autofocus: false,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.white, fontSize: 18),
       controller: passwordController,
       obscureText: true, // ẩn pass
       validator: (value) {
-        TextStyle(color: Color(0xffFFFFFF));
+        TextStyle(color: Colors.white, fontSize: 18);
         RegExp regex = new RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
           return ("Password is required for login");
@@ -94,22 +95,14 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Password",
-        hintStyle: TextStyle(color: Color(0xffCCCCCC)),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10).copyWith(),
-          // width: 0.0 produces a thin "hairline" border
-          borderSide: BorderSide(color: Colors.white, width: 1.0),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10).copyWith(),
-        ),
+        hintStyle: TextStyle(color: Color(0xff99CCCC), fontSize: 16),
       ),
     );
 
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30).copyWith(),
-      color: Colors.white,
+      color: Color(0xff003333),
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -120,17 +113,19 @@ class _LoginScreenState extends State<LoginScreen> {
           "Login",
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+              fontSize: 20,
+              color: Color(0xff99CCCC),
+              fontWeight: FontWeight.bold),
         ),
       ),
     );
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xff009966),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.black,
+            color: Color(0xff009966),
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Form(
@@ -157,7 +152,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: <Widget>[
                         Text(
                           "Don't have an account? ",
-                          style: TextStyle(color: Color(0xffDDDDDD)),
+                          style:
+                              TextStyle(color: Color(0xff99CCCC), fontSize: 16),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -171,9 +167,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             "SignUp",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Color(0xff99CCCC),
                                 fontWeight: FontWeight.bold,
-                                fontSize: 15),
+                                fontSize: 18),
                           ),
                         )
                       ],
@@ -185,9 +181,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             'Forgot Password ?',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Color(0xff99CCCC),
                                 fontWeight: FontWeight.bold,
-                                fontSize: 15),
+                                fontSize: 18),
                           ),
                           onPressed: () => Navigator.of(context).push(
                             MaterialPageRoute(

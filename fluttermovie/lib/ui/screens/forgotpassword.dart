@@ -20,7 +20,7 @@ class _ResetScreenState extends State<ResetScreen> {
     final emailField = TextFormField(
       autofocus: false,
       controller: emailController,
-      style: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.white, fontSize: 18),
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value!.isEmpty) {
@@ -44,21 +44,14 @@ class _ResetScreenState extends State<ResetScreen> {
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Reset",
         hintStyle: TextStyle(color: Color(0xffCCCCCC)),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10).copyWith(),
-          // width: 0.0 produces a thin "hairline" border
-          borderSide: BorderSide(color: Colors.white, width: 1.0),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10).copyWith(),
-        ),
+        //
       ),
     );
 
     final ResetButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30).copyWith(),
-      color: Colors.white,
+      color: Color(0xff003333),
       child: MaterialButton(
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -71,12 +64,14 @@ class _ResetScreenState extends State<ResetScreen> {
           "Reset",
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+              fontSize: 20,
+              color: Color(0xff99CCCC),
+              fontWeight: FontWeight.bold),
         ),
       ),
     );
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xff009966),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -90,7 +85,7 @@ class _ResetScreenState extends State<ResetScreen> {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            color: Colors.black,
+            color: Color(0xff009966),
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Form(
@@ -100,7 +95,7 @@ class _ResetScreenState extends State<ResetScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                        height: 100,
+                        height: 180,
                         child: Image.asset(
                           "assets/image/bgr.png",
                           fit: BoxFit.contain,

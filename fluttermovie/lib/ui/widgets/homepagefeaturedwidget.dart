@@ -50,15 +50,40 @@ class HomePageFeaturedWidget extends StatelessWidget {
                     ),
                     color: Colors.black45,
                   ),
-                  child: Text(
-                    "${snapshot.data![id].original_title}",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                    softWrap: true,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "${snapshot.data![id].original_title}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                          softWrap: true,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      Expanded(
+                        flex: -1,
+                        child: Icon(
+                          Icons.panorama_photosphere_outlined,
+                          size: 20,
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      Expanded(
+                        flex: -2,
+                        child: Text(
+                          "${snapshot.data![id].rating}/10",
+                          style: TextStyle(
+                            color: Colors.yellow,
+                            fontSize: 16,
+                            fontFamily: "Raleway-Regular",
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               )

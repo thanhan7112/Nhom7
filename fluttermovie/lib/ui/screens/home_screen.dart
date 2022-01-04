@@ -5,6 +5,8 @@ import 'package:fluttermovie/models/genremodel.dart';
 import 'package:fluttermovie/ui/screens/about.dart';
 import 'package:fluttermovie/ui/screens/login_screen.dart';
 import 'package:fluttermovie/ui/screens/saved.dart';
+import 'package:fluttermovie/ui/screens/search.dart';
+
 import 'package:fluttermovie/ui/widgets/homepagefeaturedwidget.dart';
 import 'package:fluttermovie/ui/widgets/widgets.dart';
 import 'package:fluttermovie/ui/screens/mydrawerheader.dart';
@@ -31,38 +33,56 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         //menu
-        drawer: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20),
-            bottomRight: Radius.circular(20),
+
+        drawer: Theme(
+          //trong suoots
+          data: Theme.of(context).copyWith(
+            // Set the transparency here
+            canvasColor: Colors
+                .transparent, //or any other color you want. e.g Colors.blue.withOpacity(0.5)
           ),
-          child: Drawer(
-            child: SingleChildScrollView(
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            child: Drawer(
               child: Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    right: BorderSide(width: 1.0, color: Colors.white),
+                // color: Colors.transparent,
+                child: SingleChildScrollView(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        right: BorderSide(width: 1.0, color: Colors.white),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        MyHeaderDrawer(),
+                        MyDrawerList(),
+                      ],
+                    ),
                   ),
-                ),
-                child: Column(
-                  children: [
-                    MyHeaderDrawer(),
-                    MyDrawerList(),
-                  ],
                 ),
               ),
             ),
           ),
         ),
+
         //
 
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          iconTheme: IconThemeData(color: Colors.white),
+          backgroundColor: Color(0xff003333),
           elevation: 0,
           actions: <Widget>[
             IconButton(
-                icon: Icon(Icons.search, color: Colors.white), onPressed: () {})
+              icon: Icon(Icons.search, color: Colors.white),
+              onPressed: () {
+                showSearch(context: context, delegate: SearchMovie());
+              },
+            ),
           ],
           title: Text(
             "TMDB",
@@ -77,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: <Widget>[
               Container(
-                height: MediaQuery.of(context).size.height / 2.8,
+                height: MediaQuery.of(context).size.height / 2,
                 child: FutureBuilder<List<FeaturedMovieModel>>(
                   future: featuredMovies,
                   builder: (context, snapshot) {
@@ -107,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                   10.0), //action adventure...
-                              color: Colors.black, //màu khung action,...
+                              color: Color(0xff003333), //màu khung action,...
                               boxShadow: [
                                 BoxShadow(
                                     color: Colors.black,
@@ -124,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 5.0),
                             child: Text(
-                              "${snapshot.data![id].name}",
+                              "${snapshot.data![id].name}", //action ...
                               style: Theme.of(context)
                                   .textTheme
                                   .headline6!
@@ -164,7 +184,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       } else {
                         return Center(
-                          child: CircularProgressIndicator(),
+                          child:
+                              CircularProgressIndicator(), //hinh tron loading
                         );
                       }
                     },
@@ -173,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SectionContainer(
                 //Build ben section_container.dart
-                sectionTitle: "Popular on TMDB",
+                sectionTitle: "What's Popular",
                 child: Container(
                   height: MediaQuery.of(context).size.height / 2.8,
 
@@ -207,6 +228,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget MyDrawerList() {
     return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      color: Colors.black.withOpacity(0.4),
       padding: EdgeInsets.only(
         top: 15,
       ),
@@ -239,6 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Icon(
                   Icons.account_balance,
                   size: 20,
+                  color: Colors.white,
                 ),
               ),
               Expanded(
@@ -246,7 +271,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text(
                   "Profile",
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 16,
                   ),
                 ),
@@ -277,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Icon(
                   Icons.bookmark_add_outlined,
                   size: 20,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               Expanded(
@@ -285,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text(
                   "My movies",
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 16,
                   ),
                 ),
@@ -316,7 +341,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Icon(
                   Icons.wrap_text,
                   size: 20,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               Expanded(
@@ -324,7 +349,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text(
                   "Exit",
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 16,
                   ),
                 ),

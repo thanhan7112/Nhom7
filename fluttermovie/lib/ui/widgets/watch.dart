@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttermovie/ui/screens/screens.dart';
 
 class watch extends StatelessWidget {
   final String imgUrl;
@@ -59,50 +58,8 @@ class watch extends StatelessWidget {
               ),
             ),
           ),
-          // Align(
-          //   alignment: Alignment.bottomCenter,
-          //   child: InkWell(
-          //     onTap: () {
-          //       Navigator.pushNamed(context, VideoApp.route);
-          //     },
-          //     child: Container(
-          //       decoration: BoxDecoration(
-          //         shape: BoxShape.circle,
-          //         color: Colors.white,
-          //         boxShadow: [
-          //           BoxShadow(
-          //               color: Colors.black45,
-          //               blurRadius: 3.0,
-          //               offset: Offset(0, 1)),
-          //         ],
-          //       ),
-          //       padding: EdgeInsets.all(15.0),
-          //       child: Icon(
-          //         Icons.play_arrow,
-          //         color: Colors.red,
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
   }
 }
-
-// class CustomClip extends CustomClipper<Path> {
-//   @override
-//   Path getClip(Size size) {
-//     Path path = Path();
-
-//     path.lineTo(0, size.height);
-//     path.quadraticBezierTo(size.width, size.height, size.width, size.height);
-//     path.lineTo(size.width, 0);
-//     return path;
-//   }
-
-//   @override
-//   bool shouldReclip(CustomClip oldClipper) {
-//     return true;
-//   }
-// }

@@ -62,12 +62,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   return TextSpan(
                                       text:
                                           //Dòng chữ nhỏ dưới tên phim
-                                          "${snapshot.data!.genre[i]['name']} ");
+                                          "${snapshot.data!.genre[i]['name']}");
                                 },
                               ),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
+                                fontFamily: "Raleway-Regular",
                               ),
                             ),
                           ),
@@ -77,6 +78,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             child: Row(
                               children: [
                                 Expanded(
+                                  flex: -4,
                                   child: Icon(
                                     Icons.thumb_up_alt_outlined,
                                     size: 20,
@@ -84,12 +86,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   ),
                                 ),
                                 Expanded(
-                                  flex: 6,
+                                  flex: 8,
                                   child: Text(
                                     "${snapshot.data!.vote_count}",
                                     style: TextStyle(
                                       color: Colors.yellow,
                                       fontSize: 16,
+                                      fontFamily: "Raleway-Regular",
                                     ),
                                   ),
                                 )
@@ -103,6 +106,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             style: TextStyle(
                               color: Colors.yellow,
                               fontSize: 18,
+                              fontFamily: "Raleway-Regular",
                             ),
                           ),
                           SizedBox(height: 15.0),
@@ -110,7 +114,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: RatingBar.builder(
-                                initialRating: snapshot.data!.rating,
+                                initialRating: snapshot.data!.rating, //hang sao
                                 direction: Axis.horizontal,
                                 allowHalfRating: true,
                                 itemCount: 5,
@@ -138,6 +142,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     style: TextStyle(
                                       color: Colors.yellow,
                                       fontSize: 16,
+                                      fontFamily: "Raleway-Regular",
                                     ),
                                   ),
                                   Text(
@@ -145,6 +150,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16,
+                                      fontFamily: "Raleway-Regular",
                                     ),
                                   ),
                                 ],
@@ -156,6 +162,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     style: TextStyle(
                                       color: Colors.yellow,
                                       fontSize: 16,
+                                      fontFamily: "Raleway-Regular",
                                     ),
                                   ),
                                   Text(
@@ -163,6 +170,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16,
+                                      fontFamily: "Raleway-Regular",
                                     ),
                                   ),
                                 ],
@@ -174,6 +182,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     style: TextStyle(
                                       color: Colors.yellow,
                                       fontSize: 16,
+                                      fontFamily: "Raleway-Regular",
                                     ),
                                   ),
                                   Text(
@@ -181,6 +190,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16,
+                                      fontFamily: "Raleway-Regular",
                                     ),
                                   ),
                                 ],
@@ -193,6 +203,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             style: TextStyle(
                               color: Colors.yellow,
                               fontSize: 20,
+                              fontFamily: "Raleway-Regular",
                             ),
                           ),
                           SizedBox(
@@ -204,6 +215,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
+                              fontFamily: "Raleway-Regular",
                             ),
                           ),
                           SizedBox(height: 15.0),
@@ -211,10 +223,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             children: <Widget>[
                               Expanded(
                                 child: InkWell(
-                                  // onTap: () {
-                                  //   Navigator.pushNamed(
-                                  //       // context, VideoApp.route);
-                                  // },
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, VideoApp.route);
+                                  },
                                   child: Container(
                                     width: 150.0,
                                     height: 60.0,
@@ -223,7 +235,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                       'Trailer',
                                       style: TextStyle(
                                           color: Colors.black,
-                                          fontFamily: 'Arvo',
+                                          fontFamily: "Raleway-Regular",
                                           fontSize: 20.0),
                                     ),
                                     decoration: BoxDecoration(

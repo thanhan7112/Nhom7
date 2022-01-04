@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:fluttermovie/models/searchmodel.dart';
 import 'package:http/http.dart' as http;
+
 import 'package:fluttermovie/models/moviemodel.dart';
 import 'package:fluttermovie/models/featuredmoviemodel.dart';
 
@@ -9,12 +11,17 @@ import 'models/genremodel.dart';
 
 //Lớp Api sẽ chịu trách nhiệm gọi backend mỗi khi bạn gọi một trong các hàm của nó.
 class Api {
-  var httpClient = http.Client();
-
+  static var httpClient = http.Client();
+  var data = [];
+  List<SearchModel> results = [];
   // Bên trong lớp này đặt các biến sau:
   static const url = "https://api.themoviedb.org/3";
+  // static const urlBase = 'https://api.themoviedb.org/3/movie';
   static const apiKey = "22029fdd6e2d58caa827696931864516";
-
+  static const urlSearch =
+      'https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false';
+  // static const urlUpcoming = '/upcoming?';
+  // static const urlLanguage = '&language=en-US';
   //Hàm getGenreList() nó là một async(kh đồng bộ) và trả về một future
   //Hàm này trả về một future kiểu danh sách kiểu GenreModel
   Future<List<GenreModel>> getGenreList() async {
@@ -65,10 +72,40 @@ class Api {
       throw Exception('Failed to load Movie Information');
     }
   }
+
+  Future<List<SearchModel>> getSearchList({String? MovieName}) async {
+    try {
+      final response =
+          await http.get(Uri.parse("$url/movie/popular?api_key=$apiKey"));
+      if (response.statusCode == 200) {
+        data =
+            json.decode(response.body)['results'].cast<Map<String, dynamic>>();
+        results = data.map((e) => SearchModel.fromJson(e)).toList();
+        if (MovieName != null) {
+          results = results
+              .where((element) => element.original_title
+                  .toLowerCase()
+                  .contains((MovieName.toLowerCase())))
+              .toList();
+        }
+      } else {
+        print("fetch error");
+      }
+    } on Exception catch (e) {
+      print('error: $e');
+    }
+    return results;
+  }
 }
 
+//FeaturedMovieModel = TrendingMovie
 String getPosterImage(String input) {
   return "https://image.tmdb.org/t/p/original/$input";
 }
+
 // hình ảnh áp phích mà chúng ta nhận được từ API không phải là url đầy đủ, vì vậy ta tạo một hàm getPosterImage trong thư mục api.dart
 //Hàm này dành riêng cho TMDb api và trả về url hình ảnh đầy đủ
+// String getVidep(String input) {
+//   return "https://api.themoviedb.org/3/movie/297762/videos?api_key=$apiKey&language=en-US/$input";
+// }
+

@@ -39,8 +39,15 @@ dependencies:
   firebase_core: ^1.10.5
   cloud_firestore: ^3.1.0
   video_player: ^2.2.7
+  getwidget: ^2.0.4
+  # get: ^4.6.1
   provider: ^6.0.1
-
+  dartz: ^0.10.1
+  # intl: ^0.17.0
+  equatable: ^2.0.3
+  url_launcher: ^6.0.17
+  # get_it: ^7.2.0
+  cached_network_image: ^3.2.0
   #Gói này được sử dụng để thực hiện các yêu cầu http.
   http: ^0.13.4
   

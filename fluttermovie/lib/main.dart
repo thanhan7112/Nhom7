@@ -19,11 +19,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           fontFamily: 'Raleway',
-          errorColor: Colors.white),
+          errorColor: Colors.white,
+          focusColor: Colors.red),
       home: LoginScreen(),
-      // routes: {
-      //   VideoApp.route: (ctx) => VideoApp(),
-      // },
+      routes: {
+        VideoApp.route: (ctx) => VideoApp(),
+      },
     );
   }
 }
