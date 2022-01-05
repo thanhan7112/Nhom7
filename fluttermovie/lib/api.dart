@@ -18,8 +18,8 @@ class Api {
   static const url = "https://api.themoviedb.org/3";
   // static const urlBase = 'https://api.themoviedb.org/3/movie';
   static const apiKey = "22029fdd6e2d58caa827696931864516";
-  static const urlSearch =
-      'https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false';
+  // static const urlSearch =
+  //     'https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false';
   // static const urlUpcoming = '/upcoming?';
   // static const urlLanguage = '&language=en-US';
   //Hàm getGenreList() nó là một async(kh đồng bộ) và trả về một future
